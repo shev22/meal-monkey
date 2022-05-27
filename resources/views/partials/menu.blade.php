@@ -1,5 +1,10 @@
 
+<button type="button" class="btn btn-info">
+   </i> <a href="{{'/cart'}}">Shopping-Cart [{{ count((array) session('cart')) }}]</a>
+</button>
 
+
+   
 
             <div class="menu text-right">
                 <ul>
@@ -21,4 +26,5 @@
                 </ul>
             </div>
 
+            
             

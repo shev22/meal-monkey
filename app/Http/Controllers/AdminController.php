@@ -24,11 +24,9 @@ class AdminController extends Controller
         $food = count(Food::all());
         $this->manageOrder();
         $total_orders = count($this->orderLists);
-        $total  = Order::all();
-       
-        foreach($total as $total_rev)
-        $total_revenue=0;
-         $total_revenue += $total_rev['total'];
+        
+        $total_revenue = Order::sum('total');
+
         return view('admin.admin', compact('total_orders', 'category', 'food', 'total_revenue'));
     }
 
@@ -37,9 +35,6 @@ class AdminController extends Controller
 
         return view('admin.add-admin');
     }
-
-
-
     public function manageAdmin()
     {
 

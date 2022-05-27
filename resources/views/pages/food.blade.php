@@ -37,9 +37,10 @@
             <h2 class="text-center">Food Menu</h2>
 
             @foreach($foodPage as $fdPage)
+            
             <div class="food-menu-box">
                 <div class="food-menu-img">
-                    <img src="{{asset('images/'.$fdPage->image_name)}}" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                    <img src="{{asset('images/'.$fdPage->image_name)}}" alt="Chicke Hawain Pizza" width = '110px' height = '110px'class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
                     <h4> {{$fdPage->title}}</h4>

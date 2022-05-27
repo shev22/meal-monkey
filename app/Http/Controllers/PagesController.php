@@ -48,7 +48,11 @@ class PagesController extends Controller
     {
         return view('pages.order');
     }
-    
+
+    public function success()
+    {
+        return view('pages.success');
+    }
     
     
 }

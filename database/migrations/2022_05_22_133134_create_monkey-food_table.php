@@ -17,7 +17,7 @@ class CreateMonkeyFoodTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->float('price');
+            $table->float('price')->default(100);
             $table->string('image_name');
             $table->unsignedBigInteger('category_id');
             $table->string('featured');

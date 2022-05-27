@@ -11,7 +11,7 @@
         <form action="{{'admin.store'}}" method="POST">
             @csrf
 
-            <div class="box">
+           
                 <table class="tbl-30">
                     <tr>
                         <td>Full Name</td>
@@ -31,7 +31,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+          
         </form>
     </div>
 </div>

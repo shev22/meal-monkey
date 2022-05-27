@@ -1,5 +1,7 @@
 @extends('partials.pages-layout')
 @section('content')
+
+
     <!-- Navbar Section Starts Here -->
     <section class="navbar">
         <div class="container">
@@ -31,14 +33,21 @@
 
     <!-- CAtegories Section Starts Here -->
     <section class="categories">
+
+
         <div class="container">
+            @if(session('success'))
+          {{ session('success') }}
+        
+    @endif
+
             <h2 class="text-center">Explore Food</h2>
 
 
             @foreach($category as $cat)
             <a href="{{url('/food-category', $cat->id)}}">
             <div class="box-3 float-container">
-                <img src="{{asset('images/'.$cat->image_name)}}" alt="Pizza" class="img-responsive img-curve">
+                <img src="{{asset('images/'.$cat->image_name)}}" alt="Pizza" width = '400px' height = '400px' class="img-responsive img-curve">
 
                 <h3 class="float-text text-white"> {{$cat->title}}</h3>
             </div>
@@ -55,13 +64,13 @@
 
 
     <section class="food-menu">
-        <div class="container">
+        <div class="container food_data">
             <h2 class="text-center">Food Menu</h2>
 
             @foreach($foodIndex as $fdIndex)
             <div class="food-menu-box">
                 <div class="food-menu-img">
-                    <img src="{{asset('images/'.$fdIndex->image_name)}}" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                    <img src="{{asset('images/'.$fdIndex->image_name)}}" alt="Chicke Hawain Pizza"width = '110px' height = '110px' class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
                     <h4> {{$fdIndex->title}}</h4>
@@ -71,12 +80,16 @@
                     </p>
                     <br>
 
-                    <a href="{{url('/order', $fdIndex->id)}}" class="btn btn-primary">Order Now</a>
+                  {{-- <a id = "add-to-cart" href="{{url('/add-to-cart',$fdIndex->id)}}" class="btn btn-primary" role="button">Order Now</a>  --}}
+                    <input type="hidden" name="_token" id="cart_token" value="{{csrf_token()}}">
+                    <input type="hidden" name="{{$fdIndex->id}}" id="cart_food_id" value="{{$fdIndex->id}}">
+                  <button name id = "add-to-cart"  class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
 
             @endforeach
 
+          
 
             <div class="clearfix"></div>
 
@@ -85,7 +98,7 @@
         </div>
 
         <p class="text-center">
-            <a href="#">See All Foods</a>
+            <a href="{{url('/food')}}">See All Foods</a>
         </p>
     </section>
     <!-- fOOD Menu Section Ends Here -->

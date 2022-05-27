@@ -26,7 +26,7 @@
             @foreach($category as $cat)
             <a href="{{url('/food-category', $cat->id)}}">
             <div class="box-3 float-container">
-                <img src="{{asset('images/'.$cat->image_name)}}" alt="Pizza" class="img-responsive img-curve">
+                <img src="{{asset('images/'.$cat->image_name)}}" alt="Pizza" width = '400px' height = '400px' class="img-responsive img-curve">
 
                 <h3 class="float-text text-white"> {{$cat->title}}</h3>
             </div>

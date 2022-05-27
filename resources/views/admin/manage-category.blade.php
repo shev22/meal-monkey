@@ -32,7 +32,7 @@
                     
                     @csrf
                     @method('DELETE')
-                        <button class="btn-danger"> delete Category</button>
+                        <button class="btn-danger"> delete Category</button> 
                     </form>
                 </td>
             </tr>

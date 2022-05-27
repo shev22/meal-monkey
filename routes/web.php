@@ -63,15 +63,15 @@ Route::group(['middleware' => ['AuthCheck']], function () {
     Route::put('/store-food',   [App\Http\Controllers\FoodController::class, 'storeFood']);
     Route::get('/manage-food',   [App\Http\Controllers\FoodController::class, 'manageFood']);
 });
-Route::get('/food-search',    [App\Http\Controllers\FoodController::class, 'searchFood']);
-Route::get('/food-category/{id}',    [App\Http\Controllers\FoodController::class, 'foodCategory']);
-Route::get('/order/{id}',    [App\Http\Controllers\FoodController::class, 'foodOrder']);
-Route::get('/food-order',      [App\Http\Controllers\OrderController::class, 'addOrder']);
+    Route::get('/food-search',    [App\Http\Controllers\FoodController::class, 'searchFood']);
+    Route::get('/food-category/{id}',    [App\Http\Controllers\FoodController::class, 'foodCategory']);
+    Route::get('/order/{id}',    [App\Http\Controllers\FoodController::class, 'foodOrder']);
+    Route::get('/food-order',      [App\Http\Controllers\OrderController::class, 'addOrder']);
+    Route::get('/success',      [App\Http\Controllers\PagesController::class, 'success']);
 
 
 #CART
 
-Route::get('cart', [FoodController::class, 'cart'])->name('cart');
-Route::get('add-to-cart/{id}', [FoodController::class, 'addToCart'])->name('add.to.cart');
-Route::patch('update-cart', [FoodController::class, 'update'])->name('update.cart');
-Route::delete('remove-from-cart', [FoodController::class, 'remove'])->name('remove.from.cart');
+Route::post('/add-to-cart', [App\Http\Controllers\FoodController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/cart', [App\Http\Controllers\FoodController::class, 'Cart'])->name('add.to.cart');
+

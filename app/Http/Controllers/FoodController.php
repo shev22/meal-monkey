@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\File;
 
 class FoodController extends Controller
 {
+   
+
     public function manageFood()
 
     {
@@ -29,10 +31,11 @@ class FoodController extends Controller
     public function storeFood(Request $request)
 
     {
+       $eatery = Food::all();;
+      
         $newImageName = time() . '-' . $request->title . '.' . $request->image_name->extension();
-
         $request->image_name->move(public_path('images'), $newImageName);
-
+        $i = 1;
         $food = new Food;
         $food->title = $request->input('title');
         $food->description = $request->input('description');
@@ -42,7 +45,7 @@ class FoodController extends Controller
         $food->featured = $request->input('featured');
         $food->active = $request->input('active');
         $food->save();
-        return view('admin.manage-food')->with('success', 'Product was added succesfully');
+        return view('admin.manage-food' , compact('eatery', 'i'))->with('success', 'Product was added succesfully');
     }
 
     public function deleteFood($id)
@@ -77,6 +80,35 @@ class FoodController extends Controller
         return view('pages.order', compact('orders'));
     }
 
+    public function cart()
+    {
+        
+        return view('pages.cart');
+    }
+
+    public function addToCart(Request $request)
+    {
+
+         $id = $request->input('food_id');
+         
+         $food = Food::findOrFail($id);  
+
+
+         $cart = session()->get('cart');
+  
+            $cart[$id] = [
+                "name" => $food->title,
+                "quantity" => 1,
+                "price" => $food->price,
+                "image" => $food->image_name
+            ];
+        $session = session()->put('cart', $cart);
+        echo json_encode($session);
+    
+    //    return redirect()->back()->with('success', 'Product added to cart successfully!');
+      
+
+    }
    
 }
 

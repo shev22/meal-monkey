@@ -24,7 +24,7 @@ class Ordercontroller extends Controller
     $admin->customer_email = $request->input('email');
     $admin->customer_address = $request->input('address');
     $admin->save();
-    return redirect('/')->with('success', 'Product was added succesfully');
+    return redirect('/pages.success')->with('success', 'Product was added succesfully');
    }
 
 }
